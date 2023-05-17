@@ -129,7 +129,7 @@ console.log(currentValue)
 // 2
 ```
 
-## More about the (example)[https://www.taniarascia.com/redux-react-guide/]
+## More about the [example](https://www.taniarascia.com/redux-react-guide/)
 
 1. Setting up the Redux Store
 

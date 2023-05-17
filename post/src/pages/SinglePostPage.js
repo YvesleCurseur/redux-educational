@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchPost } from '../actions/postActions'
@@ -6,21 +6,23 @@ import { fetchComments } from '../actions/commentsActions'
 
 import { Post } from '../components/Post'
 import { Comment } from '../components/Comment'
+import { useParams } from 'react-router-dom'
 
 const SinglePostPage = ({
-  match,
   dispatch,
   post,
   comments,
   hasErrors,
   loading,
 }) => {
-  useEffect(() => {
-    const { id } = match.params
+  const [postId, setPostId] = useState("")  
+  const { id } = useParams()
+  setPostId(id)
 
+  useEffect(() => {
     dispatch(fetchComments(id))
     dispatch(fetchPost(id))
-  }, [dispatch, match])
+  }, [dispatch, id])
 
   const renderPost = () => {
     if (loading.post) return <p>Loading post...</p>

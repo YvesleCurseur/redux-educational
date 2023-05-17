@@ -154,3 +154,5 @@ For this blog app, we're going to want to fetch posts from an API and put them i
 - getPosts - begin telling Redux we're going to fetch posts from an API
 - getPostsSuccess - pass the posts to Redux on successful API call
 - getPostsFailure - inform Redux that an error was encountered during Redux on failed API call
+
+What Dispatch really does is to send an action to Redux.

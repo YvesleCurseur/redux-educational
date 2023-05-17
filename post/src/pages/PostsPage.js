@@ -7,16 +7,16 @@ import { fetchPosts } from '../actions/postsActions'
 import { Post } from '../components/Post'
 
 const PostsPage = ({ dispatch, loading, posts, hasErrors }) => {
-  
-    useEffect(() => {
+
+  useEffect(() => {
     dispatch(fetchPosts())
   }, [dispatch])
 
   // Show loading, error, or success state
   const renderPosts = () => {
     if (loading) return <p>Loading posts...</p>
-    if (hasErrors) return <p>Unable to display posts.</p>
-    return posts.map((post) => <Post key={post.id} post={post} />)
+    if (hasErrors) return <p>Unable to display posts.</p> 
+    return posts.map((post) => <Post key={post.id} post={post} excerpt />)
   }
 
   return (
@@ -25,6 +25,7 @@ const PostsPage = ({ dispatch, loading, posts, hasErrors }) => {
       {renderPosts()}
     </section>
   )
+
 }
 
 // Map Redux state to React component props
@@ -33,5 +34,6 @@ const mapStateToProps = (state) => ({
   posts: state.posts.posts,
   hasErrors: state.posts.hasErrors,
 })
+
 // Connect Redux to React
 export default connect(mapStateToProps)(PostsPage)

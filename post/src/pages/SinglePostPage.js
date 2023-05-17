@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchPost } from '../actions/postActions'
@@ -15,14 +15,13 @@ const SinglePostPage = ({
   hasErrors,
   loading,
 }) => {
-  const [postId, setPostId] = useState("")  
+
   const { id } = useParams()
-  setPostId(id)
 
   useEffect(() => {
     dispatch(fetchComments(id))
     dispatch(fetchPost(id))
-  }, [dispatch, id])
+  }, [dispatch])
 
   const renderPost = () => {
     if (loading.post) return <p>Loading post...</p>
